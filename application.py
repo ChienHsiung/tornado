@@ -15,5 +15,6 @@ class Application(tornado.web.Application):
             (r'/transvalue',index.TransValueHandler),
             (r'/function',function.函數)
         ]
-        super(Application,self).__init__(handlers,**config.settings)
-        # super().__init__(handlers)
+        super().__init__(handlers,**config.settings)
+        # 舊版的寫法
+        # super(Application,self).__init__(handlers,**config.settings)
