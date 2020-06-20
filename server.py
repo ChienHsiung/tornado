@@ -1,5 +1,5 @@
-import tornado.web
 import tornado.ioloop
+import tornado.web
 import config
 from application import Application
 
