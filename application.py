@@ -13,6 +13,7 @@ class Application(tornado.web.Application):
             (r'/template',index.TemplateHandler),
             (r'/templatesub',index.TemplateHandlersub),    
             (r'/transvalue',index.TransValueHandler),
-            (r'/function',function.函數)
+            (r'/function',function.函數),
+            (r'/mobirise',function.mobirise)
         ]
         super().__init__(handlers,**config.settings)

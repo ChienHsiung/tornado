@@ -8,3 +8,7 @@ class 函數(RequestHandler):
         def mysum(a,b):
             return a+b
         self.render("函數.html" ,mysum = mysum)
+
+class mobirise(RequestHandler):
+    def get(self):
+        self.render("mobirise.html")
