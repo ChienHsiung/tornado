@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}父模板{% end %}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #oTop{
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            left: 0;
+            top: 0;
+            margin-top: 55px;
+        }
+        #oBottom {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+        }
+        #oMid{
+            width: 90%;
+            margin: 50px auto; /*由于同级元素固定定位，导致这个相对于父级定位*/
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        {% block css %}{% end %} /*不同的用block块包起来*/
+    </style>
+</head>
+<body>
+    {% include ./menu.html %}
+    <header id="oTop">顶部</header>
+    <div id="oMid">
+        {% block content %}
+            中间区域!
+        {% end %}
+    </div>
+    <footer id="oBottom">底部</footer>
+</body>
+</html>

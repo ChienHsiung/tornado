@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/mui/3.7.1/js/mui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link href="https://cdn.bootcdn.net/ajax/libs/mui/3.7.1/css/mui.min.css" rel="stylesheet">
+</head>
+<body>
+	<script>
+		mui.toast("Welcome ...........")
+	</script>
+	{% include ./menu.html %}
+	<form action="/form" method="post">
+		<div class="mui-content">
+			<div class="mui-col-sm-5">
+				NAME:<input type="text" name="username" /><br/>
+				PASS:<input type="password" name="userpassword" /><br/>
+			</div>
+			SEX:<br />
+				<input type="radio" id="m" name="sex" value="m" checked><label for="m">M</label>
+				<input type="radio" id="f" name="sex" value="f"><label for="f">F</label><br/>
+			Hobby:<br />
+				<input type="checkbox" value="power" name="hobby"/> Power
+				<input type="checkbox" value="money" name="hobby"/> Money
+				<input type="checkbox" value="girl" name="hobby" /> Girl <hr />
+			<input type="submit" value="Submit"/>
+		</div>
+	</form>
+</body>
+</html>
