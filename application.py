@@ -14,6 +14,8 @@ class Application(tornado.web.Application):
             (r'/templatesub',index.TemplateHandlersub),    
             (r'/transvalue',index.TransValueHandler),
             (r'/function',function.函數),
-            (r'/mobirise',function.mobirise)
+            (r'/mobirise',function.mobirise),
+            (r'/mobiriseform',function.mobiriseform)
+
         ]
         super().__init__(handlers,**config.settings)

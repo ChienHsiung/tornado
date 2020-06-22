@@ -12,3 +12,7 @@ class 函數(RequestHandler):
 class mobirise(RequestHandler):
     def get(self):
         self.render("mobirise.html")
+
+class mobiriseform(RequestHandler):
+    def get(self):
+        self.render("mobiriseform.html")
