@@ -5,9 +5,11 @@ import config
 
 class 函數(RequestHandler):
     def get(self,*args,**kwargs):
+        # a,b的值是從網頁上設定的
         def mysum(a,b):
             return a+b
-        self.render("函數.html" ,mysum = mysum)
+        mysum1 = {"sum":0}
+        self.render("函數.html" ,mysum = mysum,mysum1=mysum1)
 
     def post(self,*args,**kwargs):
         n1 = int(self.get_argument("num1"))
@@ -25,11 +27,5 @@ class mobirise(RequestHandler):
 
 class mobiriseform(RequestHandler):
     def get(self):
-        # data =[
-        #     {"name":"Hsiung","age":50},
-        #     {"name":"Angel","age":18},
-        #     {"name":"GG","age":99}
-        # ]
-
         data = self.application.db.get_all_obj("select * from bank order by date desc limit 100","bank")
         self.render("mobiriseform.html",data=data)

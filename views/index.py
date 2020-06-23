@@ -38,6 +38,7 @@ class FormHandler(RequestHandler):
 
 class RequestInfoHandler(RequestHandler):
 	def get(self,*args,**kwargs):
+		print("*" * 100)
 		print(self.request.method)
 		print(self.request.host)
 		print(self.request.uri)		
@@ -48,7 +49,7 @@ class RequestInfoHandler(RequestHandler):
 		print(self.request.body)
 		print(self.request.remote_ip)
 		print(self.request.files)
-		self.write("<h1 style='color:red'> show info already !! </h1>")			
+		self.write("<h1 style='color:red'> show info already !! </h1><br/>內容請查看控制台")			
 
 class UpfileHandler(RequestHandler):
 	def get(self,*args,**kwargs):
