@@ -2,6 +2,8 @@ import tornado.web
 from views import index
 from views import function
 import config
+from conn import ConnMysql
+from conn.ConnMysql import SunckSql
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -19,3 +21,11 @@ class Application(tornado.web.Application):
 
         ]
         super().__init__(handlers,**config.settings)
+
+        self.db = SunckSql(
+            config.conn["host"],
+            config.conn["user"],
+            config.conn["password"],
+            config.conn["db"],
+            config.conn["port"]
+            )

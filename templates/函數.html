@@ -7,8 +7,21 @@
 </head>
 <body>
     {% include ./menu.html %}    
-    <div style="margin-top: 0px;">
-        {{ mysum(123,321) }}
-    </div>
+    
+    <!-- 用輸入框將數值傳到後台 (輸入部分)-->
+    <form action="/function" method="post" style="margin-top: 0px;">
+        num1<input type="number" name="num1" value="5000" size="40"></input><br/>
+        num2<input type="number" name="num2" value="10" size="50"></input><br/>   
+        <input type="submit" value="OK"/>
+    </form>
+    <!-- 將預設值傳送到後台 -->
+    <script>
+        var num_a = 123
+        var num_b = 321
+        {{ mysum(1,2) }}
+    </script>
+    <!-- 用輸入框將數值傳到後台 (回傳顯示部分)-->
+    {{mysum1["sum"]}}
+    
 </body>
 </html>
