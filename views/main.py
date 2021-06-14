@@ -36,14 +36,8 @@ class Query(tornado.web.RequestHandler):
 		location = self.get_argument("YourLocation")
 
 		sql = "select * from mytable where location = '%s'" % (location)
-		# sql = "select * from mytable where location like '%Taipei%'"
-		
-		print(sql)
-		print('='*100)
 		res = QueryMysql(sql)
-		for r in res:
-			print(r)
-		self.render("show.html" , data=res)
+		self.render("show.html" , data = res)
 
 def runMysql(sql):
 	try:
