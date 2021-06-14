@@ -8,10 +8,12 @@
 </head>
 <body>
     {% include ./menu.html %}
-    <ol>
-        {% for row in data %}
-            <li>{{row[0]}}|{{row[1]}}|{{row[2]}}</li>
-        {% end %}
-    </ol>
+    <div>
+        <ol>
+            {% for row in data %}
+                <li>{{row[0]}}|{{row[1]}}|{{row[2]}}</li>
+            {% end %}
+        </ol>
+    </div>
 </body>
 </html>

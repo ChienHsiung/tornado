@@ -11,5 +11,5 @@ soup = BeautifulSoup(res.text,'html.parser')
 
 # print(res.text)
 # print(soup.text)
-# # print (soup.contents)
-print(soup.select('li'))
+# print (soup.contents)
+print(soup.select('div ol'))
