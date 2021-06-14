@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mui grid</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mui/3.7.1/css/mui.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mui/3.7.1/js/mui.js"></script>
+
+    <!-- <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+
+    <style>
+        /* google chinese font */
+        /* body{
+            @import url(https://fonts.googleapis.com/earlyaccess/cwtexkai.css);
+            font-family: ‘cwTeXKai’, serif;
+            font-weight: 300;
+        } */
+        
+        #main_box {
+            /* 最外框 */
+            border: 30px solid rgb(230, 229, 206);
+            /* 文字置中 */
+            /* text-align: center; */
+        }
+        
+        div {
+            border: solid rgb(189, 19, 27);
+            margin: 1px;
+        }
+        
+        div[class^="mui-col-"] {
+            margin: 2px;
+            border: dotted red;
+        }
+        
+        li {
+            border: solid gray;
+            margin: 5px;
+            list-style-type: none;
+            /* line-height: 5px; */
+        }
+        
+        #result li:nth-child(odd) {
+            background: #d8d8176f;
+        }
+        
+        #result li:nth-child(even) {
+            background: white;
+        }
+        
+        hr {
+            /* margin: 2em; */
+            border: dashed green;
+        }
+        /* 螢幕大小改變 */
+        
+        @media only screen and (max-width: 600px) {
+            #main_box {
+                border: 30px solid red;
+            }
+        }
+        
+        @media not screen and (max-width: 700px) {
+            #main_box {
+                border: 30px solid rgb(164, 9, 184);
+            }
+        }
+        
+        @media not screen and (max-width: 800px) {
+            #main_box {
+                border: 30px solid rgb(0, 0, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mui-content">
+        <div id="main_box">
+            <hr />
+            <div class="mui-row">
+                <!-- 左邊 -->
+                <div class="mui-col-sm-5 mui-col-xs-12">
+                    <li class="mui-table-view-cell">
+                        <form @submit="formSubmit">
+                            <div class="mui-col-sm-4 mui-col-xs-12" style="float: left ;">
+                                <strong>Name first:</strong>
+                                <input type="text" class="form-control" v-model="fname">
+                            </div>
+                            <div class="mui-col-sm-7 mui-col-xs-12" style="float: left ;padding-left: 5px">
+                                <strong>Name last:</strong>
+                                <input type="text" class="form-control" v-model="lname">
+                            </div>
+                            <div class="mui-col-sm-11 mui-col-xs-12" style="float:left;">
+                                <strong>Description:</strong>
+                                <textarea class="form-control" v-model="description"></textarea>
+
+                                <strong>ROW:</strong>
+                                <input type="text" class="form-control" v-model="row">
+
+                                <strong>ROW0:</strong>
+                                <b-form-select class="form-control" v-model="row" :options="options"></b-form-select>
+                                <hr/>
+                                <!-- 多重選單 -->
+                                <div>
+                                    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+                                    <label for="jack">Jack</label>
+                                    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+                                    <label for="john">John</label>
+                                    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+                                    <label for="mike">Mike</label>
+                                    <br>
+                                    <span>Checked names: {{ checkedNames }}</span>
+                                </div>
+                                <hr/>
+                                <br/>
+                                <button class="btn btn-success">Submit</button>
+                            </div>
+                        </form>
+                    </li>
+                </div>
+
+                <!-- 右邊 -->
+                <div class="mui-col-sm-6 mui-col-xs-12" id="result">
+                    <li class="mui-table-view-cell" v-for="d in myobj">
+                        {{d.lab1}} | {{d.lab2}} | {{d.lab3}} | {{d.lab4}} | {{d.lab5}}
+                    </li>
+                    <li class="mui-table-view-cell" v-for="dd in info.data">
+                        <!-- {{dd}} -->
+                        {{dd.id}} | {{dd.bank}} | {{dd.date}} |{{dd.time}}|{{dd.ask}}|{{dd.bid}}
+                    </li>
+                </div>
+            </div>
+            <hr/>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: ".mui-content",
+            data() {
+                return {
+                    // 多重選單
+                    checkedNames: [],
+                    mystr: "this is book !!",
+                    // 螢幕寬長
+                    mywidth: screen.width,
+                    myheight: screen.height,
+                    lname: '',
+                    fname: '',
+                    row: 0,
+                    msg: 12,
+                    msg1: 2,
+                    info: 0,
+                    name: "",
+                    description: "黃建雄\n大雄",
+                    selected: null,
+                    options: [{
+                        value: null,
+                        text: 'Please select an option'
+                    }, {
+                        value: 1,
+                        text: "one"
+                    }, {
+                        value: 3,
+                        text: 'three'
+                    }, {
+                        value: 100,
+                        text: '100'
+                    }, {
+                        value: {
+                            C: '3PO'
+                        },
+                        text: 'This is an option with object value'
+                    }, {
+                        value: 'd',
+                        text: 'This one is disabled',
+                        disabled: true
+                    }],
+                    myobj: [{
+                        lab0: "id",
+                        lab1: "bank",
+                        lab2: "dtae",
+                        lab3: "time",
+                        lab4: "ask",
+                        lab5: "bid"
+                    }, {
+                        lab0: "id",
+                        lab1: "bank",
+                        lab2: "dtae",
+                        lab3: "time",
+                        lab4: "ask",
+                        lab5: "bid"
+                    }],                    
+                };
+            },
+            mounted() {
+                // alert('hi')
+            },
+            methods: {
+                formSubmit(e) {
+                    // 保持原先輸入的資料
+                    e.preventDefault();
+                    axios
+                        .get('http://www.vietthuan.com:8080', {
+                            params: {
+                                username: "hsiung",
+                                password: "223344",
+                                row: this.row,
+                            }
+                        })
+                        .then(response => (this.info = response))
+                        .catch(function(error) { // 请求失败处理
+                            console.log(error);
+                        });
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -41,18 +41,10 @@
 			mui.toast("Welcome ...........")
 		</script>
 
-		<form class ="mui-content" action="/form" method="post">
+		<form class ="mui-content" action="/query" method="post">
 			<div class="mui-content">
-				<label style="font-size: 24px;">基本資料</label>
+				<label style="font-size: 24px;">Query資料</label>
 				<div class="mui-col-sm-5">
-					<div class="mui-input-row">
-						<label for="username">NAME</label>
-						<input type="text" name="username" placeholder = "輸入姓名"/>
-					</div>
-					<div class="mui-input-row">
-						<label for="userpassword">PWD</label>
-						<input type="password" name="userpassword"/><br/>
-					</div>			
 					<div class="mui-input-row">
 						<div class="mui-col-sm-5" style="float: left;">
 							AREA:
@@ -63,29 +55,8 @@
 									　<option value="Miaoli">苗栗</option>
 								</select>
 						</div>
-						<div class="mui-col-sm-5" style="float: left;">
-							AREA:
-								<select name="YourLocation1">
-									　<option value="Taipei">AA</option>
-									　<option value="Taoyuan">BB</option>
-									　<option value="Hsinchu">CC</option>
-									　<option value="Miaoli">DD</option>
-								</select>
-						</div>	
 					</div>		
-
-					<!-- RADIO -->
-					<label for="sex">SEX</label> 
-						<input type="radio" id="m" name="sex" value="m" checked><label for="m">M</label>
-						<input type="radio" id="f" name="sex" value="f"><label for="f">F</label><br/>
-
-					<!-- CHECKBOX -->
-					<label for="hobby">Hobby</label>
-						<input type="checkbox" value="power" name="hobby"/> Power
-						<input type="checkbox" value="money" name="hobby"/> Money
-						<input type="checkbox" value="girl" name="hobby" /> Girl <hr />
-
-					<input type="submit" value="Submit"/>
+				<input type="submit" value="Submit"/>
 				</div>
 			</div>
 		</form>
