@@ -3,6 +3,8 @@ import pymysql
 
 class Index(tornado.web.RequestHandler):
 	def get(self,*args,**kwargs):
+		remote_ip = self.request.headers.get("X-Real-Ip", "")
+		print("====> ",remote_ip)
 		# self.write("Hello world ")
 		self.render("index.html")
 
