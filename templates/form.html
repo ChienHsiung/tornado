@@ -7,33 +7,7 @@
 		<script src="{{static_url('js/mui.min.js')}}"></script>
 		<script src="{{static_url('js/jquery.min.js')}}"></script>
 		<link href="{{static_url('css/mui.min.css')}}" rel="stylesheet">
-
-		<style>
-			html,body,.mui-content{
-				background-color: rgb(244, 247, 229);
-				height: 100%;
-				width: 100%;
-			}
-			div{
-				/* border: 2px yellow dotted; */
-				padding: 2px;
-			}
-			.mui-content{
-				margin:5px;
-			}
-			.main{
-				height: 50%;
-				width: 90%;
-				border: 1px red dotted;
-				/* 水平居中 */
-				margin: 0 auto;
-				/* 文字居中 */
-				text-align: center;
-				/* 垂直居中 */
-				display:flex;
-				align-items: center;
-			}
-		</style>
+		<link rel="stylesheet" href="{{static_url('css/site.css')}}">
 	</head>
 	<body>
 		{% include ./menu.html %}
