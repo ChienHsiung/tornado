@@ -6,6 +6,7 @@
     <!-- <meta http-equiv="refresh" content="1; URL=/"> -->
 </head>
 <body>
+    {% include ./menu.html %}    
     <ol>
         {% for row in data %}
             <li>{{row[0]}}|{{row[1]}}|{{row[2]}}</li>
