@@ -3,10 +3,43 @@ import pymysql
 
 class Index(tornado.web.RequestHandler):
 	def get(self,*args,**kwargs):
-		remote_ip = self.request.headers.get("X-Real-Ip", "")
-		print("====> ",remote_ip)
 		# self.write("Hello world ")
 		self.render("index.html")
+
+class Check(tornado.web.RequestHandler):
+	# 依据header收集用户信息
+    def get(self):
+    	# self.write("-------method:\n")
+        self.write(self.request.method)
+        # self.write("\n-------uri:\n")
+        self.write(self.request.uri)
+        # self.write("\n-------path:\n")
+        self.write(self.request.path)
+        # self.write("\n-------query:\n")
+        self.write(self.request.query)
+        # self.write("\n-------version:\n")
+        self.write(self.request.version)
+        # self.write("\n-------headers:\n")
+        # self.write(self.request.headers)
+        # self.write("\n-------body:\n")
+        self.write(self.request.body)
+        # self.write("\n-------remote_ip:\n")
+        self.write(self.request.remote_ip)
+        # self.write("\n-------protocol:\n")
+        self.write(self.request.protocol)
+        # self.write("\n-------host:\n")
+        self.write(self.request.host)
+        # self.write("\n-------arguments:\n")
+        self.write(self.request.arguments)
+        # self.write("\n-------query_arguments:\n")
+        self.write(self.request.query_arguments)
+        # self.write("\n-------body_arguments:\n")
+        self.write(self.request.body_arguments)
+        # self.write("\n-------files:\n")
+        self.write(self.request.files)
+        # self.write("\n-------cookies:\n")
+        self.write(self.request.cookies)
+        # self.write("\n")
 
 class Form(tornado.web.RequestHandler):
 	def get(self,*args,**kwargs):

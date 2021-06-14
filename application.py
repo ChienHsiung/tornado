@@ -6,6 +6,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r'/', main.Index),
+            (r'/check',main.Check),
             (r'/form', main.Form),
             (r'/query',main.Query),
         ]
