@@ -76,7 +76,7 @@ class Query(tornado.web.RequestHandler):
 
 def runMysql(sql):
 	try:
-		conn = pymysql.connect(host='127.0.0.1',user='root',password='ooxx',database='my',charset='utf8')
+		conn = pymysql.connect(host='127.0.0.1',user='root',password='ooxx748',database='my',charset='utf8')
 		cur = conn.cursor()
 		cur.execute(sql)
 		conn.commit()
@@ -85,7 +85,7 @@ def runMysql(sql):
 
 def QueryMysql(sql):
 	try:
-		conn = pymysql.connect(host='127.0.0.1',user='root',password='ooxx',database='my',charset='utf8')
+		conn = pymysql.connect(host='127.0.0.1',user='root',password='ooxx748',database='my',charset='utf8')
 		cur = conn.cursor()
 		cur.execute(sql)
 		res = cur.fetchall()
